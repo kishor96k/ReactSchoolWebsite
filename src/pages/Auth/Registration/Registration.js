@@ -24,51 +24,51 @@ export default function Registration() {
                     <div className="row">
                       <div className="col-md-6 mb-4">
                         <div className="form-outline">
-                          <input type="text" id="form3Example1m" className="form-control form-control-lg" />
                           <label className="form-label" htmlFor="form3Example1m">First name</label>
+                          <input type="text" id="form3Example1m" className="form-control form-control-lg" />
                         </div>
                       </div>
                       <div className="col-md-6 mb-4">
                         <div className="form-outline">
-                          <input type="text" id="form3Example1n" className="form-control form-control-lg" />
                           <label className="form-label" htmlFor="form3Example1n">Last name</label>
+                          <input type="text" id="form3Example1n" className="form-control form-control-lg" />
                         </div>
                       </div>
                     </div>
 
                     <div className="form-outline mb-4">
-                      <input type="text" id="form3Example97" className="form-control form-control-lg" />
                       <label className="form-label" htmlFor="form3Example97">Email ID</label>
+                      <input type="text" id="form3Example97" className="form-control form-control-lg" />
                     </div>
                     <div className="form-outline mb-4">
-                      <input type="number" id="form3Example97" className="form-control form-control-lg" />
                       <label className="form-label" htmlFor="form3Example97">Contact No</label>
+                      <input type="number" id="form3Example97" className="form-control form-control-lg" />
                     </div>
 
                     <div className="form-outline mb-4">
-                      <input type="password" id="form3Example8" className="form-control form-control-lg" />
                       <label className="form-label" htmlFor="form3Example8">Password</label>
+                      <input type="password" id="form3Example8" className="form-control form-control-lg" />
                     </div>
                     <div className="form-outline mb-4">
-                      <input type="password" id="form3Example8" className="form-control form-control-lg" />
                       <label className="form-label" htmlFor="form3Example8">Confirm Password</label>
+                      <input type="password" id="form3Example8" className="form-control form-control-lg" />
                     </div>
 
                     <div className="d-md-flex justify-content-start align-items-center mb-4 py-2">
                       <h6 className="mb-0 me-4">Gender: </h6>
                       <div className="form-check form-check-inline mb-0 me-4">
-                        <input className="form-check-input" type="radio" name="inlineRadioOptions" id="femaleGender" value="option1" />
                         <label className="form-check-label" htmlFor="femaleGender">Female</label>
+                        <input className="form-check-input" type="radio" name="inlineRadioOptions" id="femaleGender" value="option1" />
                       </div>
                       <div className="form-check form-check-inline mb-0 me-4">
-                        <input className="form-check-input" type="radio" name="inlineRadioOptions" id="maleGender" value="option2" />
                         <label className="form-check-label" htmlFor="maleGender">Male</label>
+                        <input className="form-check-input" type="radio" name="inlineRadioOptions" id="maleGender" value="option2" />
                       </div>
                     </div>
 
                     <div className="form-outline mb-4">
-                      <input type="text" id="form3Example9" className="form-control form-control-lg" />
                       <label className="form-label" htmlFor="form3Example9">Date Of Birth</label>
+                      <input type="date" id="form3Example9" className="form-control form-control-lg" />
                     </div>
 
                     <div className="d-flex justify-content-end pt-3">
