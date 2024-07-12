@@ -50,22 +50,26 @@ export default function Registration() {
                         </div>
                       </div>
                     </div>
-
-                    <div className="d-md-flex justify-content-start align-items-center mb-4 py-2">
+                      <div className="row">
+                      <div className="col-md-6 mb-4">
+                      <div className="form-outline mb-4">
                       <h6 className="mb-0 me-4">Gender: </h6>
-                      <div className="form-check form-check-inline mb-0 me-4 mr-4 ml-4 mt-2">
+                      <div className="form-check form-check-inline mb-0 me-4 mr-4 ml-4 mt-3">
                         <label className="form-check-label" htmlFor="femaleGender">Female</label>
                         <input className="form-check-input" type="radio" name="inlineRadioOptions" id="femaleGender" value="option1" />
                       </div>
-                      <div className="form-check form-check-inline mb-0 me-4 mr-4 ml-4 mt-2">
+                   
+
+                      <div className="form-check form-check-inline mb-0 me-4 mr-4 ml-4 ">
                         <label className="form-check-label" htmlFor="maleGender">Male</label>
                         <input className="form-check-input" type="radio" name="inlineRadioOptions" id="maleGender" value="option2" />
                       </div>
                     </div>
-
+                      </div>
                     <div className="form-outline mb-4" style={{ width: '50%' }}>
                       <label className="form-label" htmlFor="form3Example9">Date Of Birth</label>
                       <input type="date" id="form3Example9" className="form-control form-control-lg" />
+                    </div>
                     </div>
                     <div className="row">
                       <div className="col-md-6 mb-4">
