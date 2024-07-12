@@ -4,8 +4,8 @@ export default function Home() {
   return (
     <div>
       <div className="container register">
-        <div className="row">
-          <div className="col-md-3 register-left">
+        <div className="row ">
+          <div className="col register-left">
             <img src="https://image.ibb.co/n7oTvU/logo_white.png" alt="" />
             <h3>Welcome</h3>
             <p>JSPM pre-primary and secondary school, solpur</p>
