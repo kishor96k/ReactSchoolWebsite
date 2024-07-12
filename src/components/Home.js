@@ -1,8 +1,10 @@
 import React from "react";
 import '../styles/Home.css'
-export default function Home() {
+import Navbar from "./Navbar";
+export default function Home(props) {
   return (
     <div>
+       <Navbar heading="JSPM School"/>
       <div className="container register">
         <div className="row ">
           <div className="col register-left">
