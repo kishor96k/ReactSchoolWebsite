@@ -1,6 +1,6 @@
 import React from 'react'
 import '../About/About.css'
-
+import teacher from '../../assets/images/portrait-6040876_1920.jpg'
 export default function About() {
   return (
     <div>
@@ -18,17 +18,17 @@ export default function About() {
                 <h2>Meet the Team</h2>
                 <div className="row">
                     <div className="col-md-4 team-member text-center">
-                        <img src="teacher1.jpg" alt="Principal" className="img-fluid rounded-circle" />
+                        <img src={teacher} alt="Principal" className="img-fluid rounded-circle" />
                         <h3>John Smith</h3>
                         <p>Principal</p>
                     </div>
                     <div className="col-md-4 team-member text-center">
-                        <img src="teacher2.jpg" alt="Vice Principal" className="img-fluid rounded-circle" />
+                        <img src={teacher} alt="Vice Principal" className="img-fluid rounded-circle" />
                         <h3>Jane Doe</h3>
                         <p>Vice Principal</p>
                     </div>
                     <div className="col-md-4 team-member text-center">
-                        <img src="teacher3.jpg" alt="Head Teacher" className="img-fluid rounded-circle" />
+                        <img src={teacher} alt="Head Teacher" className="img-fluid rounded-circle" />
                         <h3>Emily White</h3>
                         <p>Head Teacher</p>
                     </div>
