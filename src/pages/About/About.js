@@ -1,6 +1,6 @@
 import React from 'react'
 import '../About/About.css'
-import teacher from '../../assets/images/portrait-6040876_1920.jpg'
+import teacher from '../../assets/images/portrait_one.jpg'
 export default function About() {
   return (
     <div>
