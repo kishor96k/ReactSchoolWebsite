@@ -1,0 +1,27 @@
+body {
+    background-color: #f8f9fa;
+}
+
+.hero {
+    background: url('../../assets/images/lake-7301021_1280.jpg') no-repeat center center;
+    background-size: cover;
+    height: 50vh;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.team-member img {
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+}
+
+.footer {
+    background-color: #343a40;
+    color: white;
+    padding: 20px 0;
+}
