@@ -12,16 +12,22 @@ import Footer from '../components/Footer';
 export default function Routing() {
     return (
         <Router>
-            <Navbar />
-            <Routes>
-                <Route exact path="/" element={<Home />} />
-                <Route exact path="/about" element={<About />} />
-                <Route exact path="/blog" element={<Blog />} />
-                <Route exact path="/contact" element={<Contact />} />
-                <Route exact path="/login" element={<Login />} />
-                <Route exact path="/registration" element={<Registration />} />
-            </Routes>
-            <Footer />
+            <div className="d-flex flex-column min-vh-100">
+                <Navbar>
+                    
+                </Navbar>
+                <main className="flex-grow-1">
+                    <Routes>
+                        <Route exact path="/" element={<Home />} />
+                        <Route exact path="/about" element={<About />} />
+                        <Route exact path="/blog" element={<Blog />} />
+                        <Route exact path="/contact" element={<Contact />} />
+                        <Route exact path="/login" element={<Login />} />
+                        <Route exact path="/registration" element={<Registration />} />
+                    </Routes>
+                </main>
+                <Footer className="mt-5" />
+            </div>
         </Router>
     );
 }
