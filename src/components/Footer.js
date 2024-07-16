@@ -1,9 +1,10 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Footer = () => {
     return (
         <>
-            <footer className="footer mt-auto py-3 bg-light">
+            <footer className="footer text-center">
                 <div className="container">
                     <div className="row">
                         <div className="col-md-4">
@@ -17,10 +18,10 @@ const Footer = () => {
                         <div className="col-md-4">
                             <h5>Quick Links</h5>
                             <ul className="list-unstyled">
-                                <li><a href="/about">About Us</a></li>
+                                <li> <Link className="nav-link" to="/about">About</Link></li>
+                                <li> <Link className="nav-link" to="/contact">Contact</Link></li>
                                 <li><a href="/admissions">Admissions</a></li>
                                 <li><a href="/academics">Academics</a></li>
-                                <li><a href="/contact">Contact</a></li>
                             </ul>
                         </div>
                         <div className="col-md-4">
@@ -32,16 +33,9 @@ const Footer = () => {
                             </ul>
                         </div>
                     </div>
-                    <div className="text-center mt-3">
-                        <p>&copy; 2024 School Name. All rights reserved.</p>
-                    </div>
                 </div>
-            </footer>
-            <footer className="footer text-center">
                 <p>&copy; 2024 Our School. All rights reserved.</p>
             </footer>
-
-
 
         </>
     );
