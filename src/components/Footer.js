@@ -28,8 +28,8 @@ const Footer = () => {
                             <h5>Follow Us</h5>
                             <ul className="list-unstyled">
                                 <li><a href="https://www.facebook.com/school" target="_blank" rel="noopener noreferrer">Facebook</a></li>
-                                <li><a href="https://www.twitter.com/school" target="_blank" rel="noopener noreferrer">Twitter</a></li>
-                                <li><a href="https://www.instagram.com/school" target="_blank" rel="noopener noreferrer">Instagram</a></li>
+                                <li><a href="https://x.com/KishorC19057759" target="_blank" rel="noopener noreferrer">Twitter</a></li>
+                                <li><a href="https://www.instagram.com/_kishor_96k/" target="_blank" rel="noopener noreferrer">Instagram</a></li>
                             </ul>
                         </div>
                     </div>
