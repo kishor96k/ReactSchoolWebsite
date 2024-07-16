@@ -34,10 +34,6 @@ export default function About() {
                     </div>
                 </div>
             </div>
-
-              <footer className="footer text-center">
-                  <p>&copy; 2024 Our School. All rights reserved.</p>
-              </footer>
   
     </div>
   )

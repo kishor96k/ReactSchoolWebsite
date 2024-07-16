@@ -2,18 +2,20 @@
 import React from 'react';
 
 // import student from '../../assets/images/lake-7301021_1280.jpg'
-// import student2 from '../../assets/images/sunset-7708222_1280.jpg'
+// import student2 from '../../assets/images/sunset-7708222_1280.jpg';
+import './Home.css';
+
 const Home = () => {
   return (
     <>
 
-      <section>
+      <section className=''>
 
         {/* Hero Section */}
-        <div className="jumbotron jumbotron-container text-center mt-n5">
+        <div className=" backimg jumbotron jumbotron-container text-center mt-n5">
           <div className="container">
-            <h1 className="display-4">Welcome to Our School</h1>
-            <p className="lead">Providing quality education since 1990</p>
+            <h1 className="text-white">Welcome to Our School</h1>
+            <p className="text-white">Providing quality education since 1990</p>
           </div>
         </div>
 
@@ -96,37 +98,7 @@ const Home = () => {
             </div>
           </div>
         </div>
-
-        {/* Footer */}
-        <footer className="bg-light text-center text-lg-start mt-5">
-          <div className="container p-4">
-            <div className="row">
-              <div className="col-lg-6 col-md-12 mb-4 mb-md-0">
-                <h5 className="text-uppercase">School Name</h5>
-                <p>
-                  Our mission is to provide quality education and foster lifelong learning.
-                </p>
-              </div>
-              <div className="col-lg-6 col-md-12 mb-4 mb-md-0">
-                <h5 className="text-uppercase">Contact Us</h5>
-                <ul className="list-unstyled mb-0">
-                  <li>
-                    <a href="#!" className="text-dark">Email: info@school.com</a>
-                  </li>
-                  <li>
-                    <a href="#!" className="text-dark">Phone: (123) 456-7890</a>
-                  </li>
-                  <li>
-                    <a href="#!" className="text-dark">Address: 123 School Street, City, Country</a>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-          <div className="text-center p-3" style={{ backgroundColor: 'rgba(0, 0, 0, 0.2)' }}>
-            © 2024 School Name
-          </div>
-        </footer>
+       
       </section>
     </>
   );
