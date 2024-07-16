@@ -7,6 +7,7 @@ import Blog from '../pages/Blog/Blog';
 import Contact from '../pages/Contact/Contact';
 import Home from '../pages/Home/Home';
 import About from '../pages/About/About';
+import Footer from '../components/Footer';
 
 export default function Routing() {
     return (
@@ -20,6 +21,7 @@ export default function Routing() {
                 <Route exact path="/login" element={<Login />} />
                 <Route exact path="/registration" element={<Registration />} />
             </Routes>
+            <Footer />
         </Router>
     );
 }
