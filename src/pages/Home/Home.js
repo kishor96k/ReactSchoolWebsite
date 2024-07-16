@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react';
-import '../Home/Home.css'
+
 // import student from '../../assets/images/lake-7301021_1280.jpg'
 // import student2 from '../../assets/images/sunset-7708222_1280.jpg';
 import './Home.css';
