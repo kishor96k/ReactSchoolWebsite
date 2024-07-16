@@ -10,7 +10,7 @@ const Home = () => {
       <section>
 
         {/* Hero Section */}
-        <div className="jumbotron jumbotron-container text-center mt-3">
+        <div className="jumbotron jumbotron-container text-center mt-n5">
           <div className="container">
             <h1 className="display-4">Welcome to Our School</h1>
             <p className="lead">Providing quality education since 1990</p>
