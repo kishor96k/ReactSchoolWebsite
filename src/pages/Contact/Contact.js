@@ -58,58 +58,6 @@ const Contact = () => {
                 </div>
             </section>
 
-            {/* <div className="container mt-4 mb-3">
-
-                <form method="post" className="p-5 bg-white">
-                    <h3 className="text-center text-primary mb-4">Drop Us a Message</h3>
-                    <div className="row">
-                        <div className="col-md-6">
-                            <div className="form-group mb-3">
-                                <input
-                                    type="text"
-                                    name="txtName"
-                                    className="form-control rounded-pill"
-                                    placeholder="Your Name *"
-                                />
-                            </div>
-                            <div className="form-group mb-3">
-                                <input
-                                    type="text"
-                                    name="txtEmail"
-                                    className="form-control rounded-pill"
-                                    placeholder="Your Email *"
-                                />
-                            </div>
-                            <div className="form-group mb-3">
-                                <input
-                                    type="text"
-                                    name="txtPhone"
-                                    className="form-control rounded-pill"
-                                    placeholder="Your Phone Number *"
-                                />
-                            </div>
-                            <div className="form-group mb-3 text-center">
-                                <input
-                                    type="submit"
-                                    name="btnSubmit"
-                                    className="btn btn-danger rounded-pill px-4 py-2"
-                                    value="Send Message"
-                                />
-                            </div>
-                        </div>
-                        <div className="col-md-6">
-                            <div className="form-group mb-3">
-                                <textarea
-                                    name="txtMsg"
-                                    className="form-control"
-                                    placeholder="Your Message *"
-                                    style={{ width: '100%', height: '150px' }}
-                                ></textarea>
-                            </div>
-                        </div>
-                    </div>
-                </form>
-            </div> */}
         </>
 
     );

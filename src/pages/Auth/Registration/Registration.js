@@ -92,10 +92,10 @@ export default function Registration() {
                       </Link>
                     </p>
 
-
                     <div className="d-flex justify-content-start pt-3">
                       <button type="button" className="btn btn-secondary btn-lg ms-2">Submit form</button>
                     </div>
+                    
                   </div>
                 </div>
               </div>
