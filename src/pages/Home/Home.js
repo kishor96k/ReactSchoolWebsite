@@ -1,14 +1,3 @@
-<<<<<<< HEAD
-import React from 'react'
-
-export default function Home() {
-  return (
-    <div>
-      
-    </div>
-  )
-}
-=======
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react';
 import '../Home/Home.css'
@@ -144,4 +133,3 @@ const Home = () => {
 };
 
 export default Home;
->>>>>>> a91b257215ab8179d1472c887fbde902006dd7b5

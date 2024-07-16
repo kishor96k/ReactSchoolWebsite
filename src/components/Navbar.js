@@ -3,13 +3,8 @@ import { Link } from 'react-router-dom';
 
 export default function Navbar() {
   return (
-<<<<<<< HEAD
     <nav className="navbar navbar-expand-lg navbar-primary" style={{background:" #94b8b8"}}>
       <Link className="navbar-brand" to="/">UNIQUE ENGLISH MEDIUM SCHOOL</Link>
-=======
-    <nav className="navbar navbar-expand-lg navbar-primary mb-0" style={{background:" #94b8b8"}}>
-      <Link className="navbar-brand" to="/">School Website</Link>
->>>>>>> a91b257215ab8179d1472c887fbde902006dd7b5
       <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span className="navbar-toggler-icon"></span>
       </button>
