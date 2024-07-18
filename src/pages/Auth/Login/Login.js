@@ -4,17 +4,13 @@ import loginimg from "../../../assets/images/login_page.jpg";
 import { useState } from "react";
 
 const Login = () => {
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  // error validation main object
   const [errors, setErrors] = useState({});
-  // this useeffect is to check the which latest value which are getting or not for dev purpose
-  //   useEffect(() => {
-  //     console.log("Email updated:", email);
-  //   }, [email]);
-  //   useEffect(() => {
-  //     console.log("Password updated:", password);
-  //   }, [password]);
 
+  // email onhchange
   const handleEmailChange = (event) => {
     const emailValue = event.target.value;
     setEmail(emailValue);
@@ -23,7 +19,7 @@ const Login = () => {
       email: validateEmail(emailValue),
     }));
   };
-
+  // password onhchange
   const handlePasswordChange = (event) => {
     const passwordValue = event.target.value;
     setPassword(passwordValue);
@@ -32,7 +28,6 @@ const Login = () => {
       password: validatePassword(passwordValue),
     }));
   };
-
   //email validation
   const validateEmail = (email) => {
     if (!email) {
@@ -54,7 +49,7 @@ const Login = () => {
     return "";
   };
 
-  // on submit
+  // on form submit
   const loginsubmit = (e) => {
     e.preventDefault();
     const emailerrors = validateEmail(email);
@@ -66,7 +61,7 @@ const Login = () => {
       });
     } else {
       console.log("form submitted", email, password);
-      // above three methods for on submit fileds mustb be clear
+      // above three methods used for ...on form submit fileds must be clear
       setEmail("");
       setPassword("");
       setErrors({});
