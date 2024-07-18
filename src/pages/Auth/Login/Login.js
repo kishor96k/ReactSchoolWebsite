@@ -1,12 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import loginimg from "../../../assets/images/login_page.jpg";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
+  const [errors, setErrors] = useState({});
   // this useeffect is to check the which latest value which are getting or not for dev purpose
   //   useEffect(() => {
   //     console.log("Email updated:", email);
@@ -16,16 +16,61 @@ const Login = () => {
   //   }, [password]);
 
   const handleEmailChange = (event) => {
-    setEmail(event.target.value);
+    const emailValue = event.target.value;
+    setEmail(emailValue);
+    setErrors((previous) => ({
+      ...previous,
+      email: validateEmail(emailValue),
+    }));
   };
 
   const handlePasswordChange = (event) => {
-    setPassword(event.target.value);
+    const passwordValue = event.target.value;
+    setPassword(passwordValue);
+    setErrors((previous) => ({
+      ...previous,
+      password: validatePassword(passwordValue),
+    }));
   };
 
+  //email validation
+  const validateEmail = (email) => {
+    if (!email) {
+      return "Email is required";
+    } else if (!/\S+@\S+\.\S+/.test(email)) {
+      return "Email is not valid";
+    }
+    return "";
+  };
+  // password validation
+  const validatePassword = (password) => {
+    if (!password) {
+      return "Password is required";
+    } else if (password.length < 7 || password.length > 12) {
+      return "Password must be between 7 to 12 characters";
+    } else if (!/(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*\W)/.test(password)) {
+      return "Password must contain at least one uppercase letter, one lowercase letter, one symbol, and one number";
+    }
+    return "";
+  };
+
+  // on submit
   const loginsubmit = (e) => {
     e.preventDefault();
-    console.log(email,password);
+    const emailerrors = validateEmail(email);
+    const passworderrors = validatePassword(password);
+    if (emailerrors || passworderrors) {
+      setErrors({
+        email: emailerrors,
+        password: passworderrors,
+      });
+    } else {
+      console.log("form submitted", email, password);
+      // above three methods for on submit fileds mustb be clear
+      setEmail("");
+      setPassword("");
+      setErrors({});
+    }
   };
 
   return (
@@ -73,6 +118,11 @@ const Login = () => {
                           value={email}
                           onChange={handleEmailChange}
                         />
+                        {errors.email && (
+                          <div className="error text-danger">
+                            {errors.email}
+                          </div>
+                        )}
                         <label className="form-label" htmlFor="form2Example17">
                           Email address
                         </label>
@@ -86,6 +136,11 @@ const Login = () => {
                           value={password}
                           onChange={handlePasswordChange}
                         />
+                        {errors.password && (
+                          <div className="error text-danger">
+                            {errors.password}
+                          </div>
+                        )}
                         <label className="form-label" htmlFor="form2Example27">
                           Password
                         </label>
