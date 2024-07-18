@@ -191,8 +191,8 @@ export default function Registration() {
       lastname: lastnameerrors,
       gender: gendererrors,
       date: dateerrors,
-      contactNumber: contactNumbererrors,
-      confirmPassword: confirmPassworderrors,
+      number: contactNumbererrors,
+      confirmpassword: confirmPassworderrors,
     });
     if (
       emailerrors ||
