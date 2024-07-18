@@ -17,12 +17,15 @@ const Login = () => {
 
   const handleEmailChange = (event) => {
     setEmail(event.target.value);
-    console.log(email);
   };
 
   const handlePasswordChange = (event) => {
     setPassword(event.target.value);
-    console.log(password);
+  };
+
+  const loginsubmit = (e) => {
+    e.preventDefault();
+    console.log(email,password);
   };
 
   return (
@@ -46,7 +49,7 @@ const Login = () => {
                 </div>
                 <div className="col-md-6 col-lg-7 d-flex align-items-center p-4">
                   <div className="card-body p-4 p-lg-5 text-black">
-                    <form>
+                    <form onSubmit={loginsubmit}>
                       <div className="d-flex align-items-center mb-3 pb-1">
                         <i
                           className="fas fa-cubes fa-2x me-3"
@@ -91,7 +94,7 @@ const Login = () => {
                       <div className="pt-1 mb-4">
                         <button
                           className="btn btn-dark btn-lg btn-block"
-                          type="button"
+                          type="submit"
                         >
                           {" "}
                           Login
