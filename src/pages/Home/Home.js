@@ -20,7 +20,7 @@ const Home = () => {
         </div>
 
         {/* Modules Section */}
-        <div className="container">
+        <div className="container mb-4">
           <div className="row">
             {/* Module 1: News */}
             <div className="col-md-4">
