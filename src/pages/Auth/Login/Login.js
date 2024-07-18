@@ -1,14 +1,20 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import loginimg from "../../../assets/images/login_page.jpg";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const Login = () => {
-
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   // error validation main object
   const [errors, setErrors] = useState({});
+  // button disabled/enabled
+  const [isFormValid, setIsFormValid] = useState(false);
+
+  useEffect(() => {
+    const isValid = validateEmail(email) && !validatePassword(password);
+    setIsFormValid(isValid);
+  }, [email, password]);
 
   // email onhchange
   const handleEmailChange = (event) => {
@@ -145,6 +151,7 @@ const Login = () => {
                         <button
                           className="btn btn-dark btn-lg btn-block"
                           type="submit"
+                          disabled={!isFormValid}
                         >
                           {" "}
                           Login

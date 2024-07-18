@@ -1,5 +1,5 @@
 /* eslint-disable jsx-a11y/img-redundant-alt */
-import React, { useState } from "react";
+import { useState, useEffect } from "react";
 import studimg from "../../../assets/images/studentone.jpg";
 import { Link } from "react-router-dom";
 
@@ -15,6 +15,30 @@ export default function Registration() {
 
   // error validation main object
   const [errors, setErrors] = useState("");
+  //for button
+  const [isFormValid, setIsFormValid] = useState(false);
+
+  useEffect(() => {
+    const isValid =
+      !validateFirstName(firstname) &&
+      !validateLastName(lastname) &&
+      !validateEmail(email) &&
+      !validateContactNumber(number) &&
+      !validateGender(gender) &&
+      !validateDate(date) &&
+      !validatePassword(password) &&
+      !validateConfirmPassword(confirmpassword);
+    setIsFormValid(isValid);
+  }, [
+    firstname,
+    lastname,
+    email,
+    number,
+    gender,
+    date,
+    password,
+    confirmpassword,
+  ]);
 
   // firstname onchange
   const handleFirstNameChange = (event) => {
@@ -60,7 +84,7 @@ export default function Registration() {
     setGender(GenderValue);
     setErrors((previous) => ({
       ...previous,
-      gender: validateEmail(GenderValue),
+      gender: validateGender(GenderValue),
     }));
   };
 
@@ -89,7 +113,7 @@ export default function Registration() {
     setConfirmPassword(confirmPasswordValue);
     setErrors((previous) => ({
       ...previous,
-      confirmPassword: validateConfirmPassword(confirmPasswordValue),
+      confirmpassword: validateConfirmPassword(confirmPasswordValue),
     }));
   };
 
@@ -162,15 +186,14 @@ export default function Registration() {
   };
 
   //Confirm Password Validation
-  const validateConfirmPassword = (confirmPassword) => {
-    if (!confirmPassword) {
+  const validateConfirmPassword = (confirmpassword) => {
+    if (!confirmpassword) {
       return "Confirm Password is required";
-    } else if (confirmPassword !== password) {
+    } else if (confirmpassword !== password) {
       return "Passwords do not match";
     }
     return "";
   };
-
 
   // on form submit
   const submitForm = (e) => {
@@ -475,6 +498,7 @@ export default function Registration() {
                         <button
                           type="submit"
                           className="btn btn-secondary btn-lg ms-2"
+                          disabled={!isFormValid}
                         >
                           Submit form
                         </button>
