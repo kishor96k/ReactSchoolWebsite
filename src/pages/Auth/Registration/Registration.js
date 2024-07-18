@@ -87,8 +87,8 @@ const [cpassword,setCpassword]=useState();
                       </div>
                       <div className="col-md-6 mb-4">
                         <div className="form-outline mb-4">
-                          <label className="form-label" htmlFor="form3Example97">Contact No</label>
-                          <input type="text" id="form3Example97" className="form-control form-control-lg" onChange={toggleContactNo}/>
+                          <label className="form-label" htmlFor="form3Example98">Contact No</label>
+                          <input type="text" id="form3Example98" className="form-control form-control-lg" onChange={toggleContactNo}/>
                         </div>
                       </div>
                     </div>
@@ -122,8 +122,8 @@ const [cpassword,setCpassword]=useState();
                       </div>
                       <div className="col-md-6 mb-4">
                         <div className="form-outline mb-4" >
-                          <label className="form-label" htmlFor="form3Example8">Confirm Password</label>
-                          <input type="password" id="form3Example8" className="form-control form-control-sm" style={{ width: '100%' }} onChange={toggleConfPass}/>
+                          <label className="form-label" htmlFor="form3Example2">Confirm Password</label>
+                          <input type="password" id="form3Example2" className="form-control form-control-sm" style={{ width: '100%' }} onChange={toggleConfPass}/>
                         </div>
                       </div>
                     </div>
