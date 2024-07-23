@@ -5,21 +5,34 @@ import studimg from "../../../assets/images/studentone.jpg";
 import { Link } from "react-router-dom";
 
 export default function Registration() {
-  const [firstname, setFirstName] = useState("");
-  const [lastname, setLastName] = useState("");
-  const [email, setEmail] = useState("");
-  const [number, setNumber] = useState("");
-  const [gender, setGender] = useState("");
-  const [date, setDate] = useState("");
-  const [password, setPassword] = useState("");
-  const [confirmpassword, setConfirmPassword] = useState("");
+  const [formData, setFormData] = useState({
+    firstname: "",
+    lastname: "",
+    email: "",
+    number: "",
+    gender: "",
+    date: "",
+    password: "",
+    confirmpassword: "",
+  });
 
-  // error validation main object
-  const [errors, setErrors] = useState("");
-  //for button
+  // for all input filed errors
+  const [errors, setErrors] = useState({});
+  // for button disbale/able
   const [isFormValid, setIsFormValid] = useState(false);
 
   useEffect(() => {
+    const {
+      firstname,
+      lastname,
+      email,
+      number,
+      gender,
+      date,
+      password,
+      confirmpassword
+    } = formData;
+
     const isValid =
       !validateFirstName(firstname) &&
       !validateLastName(lastname) &&
@@ -30,115 +43,57 @@ export default function Registration() {
       !validatePassword(password) &&
       !validateConfirmPassword(confirmpassword);
     setIsFormValid(isValid);
-  }, [
-    firstname,
-    lastname,
-    email,
-    number,
-    gender,
-    date,
-    password,
-    confirmpassword,
-  ]);
+  }, [formData]);
 
-  // firstname onchange
-  const handleFirstNameChange = (event) => {
-    const FirstNameValue = event.target.value;
-    setFirstName(FirstNameValue);
-    setErrors((previous) => ({
-      ...previous,
-      firstname: validateFirstName(FirstNameValue),
+  // on change
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    setFormData((prevData) => ({
+      ...prevData,
+      [name]: value,
     }));
-  };
-  // lastname onchange
-  const handleLastNameChange = (event) => {
-    const LastNameValue = event.target.value;
-    setLastName(LastNameValue);
-    setErrors((previous) => ({
-      ...previous,
-      lastname: validateLastName(LastNameValue),
-    }));
-  };
-  // email onchange
-  const handleEmailChange = (event) => {
-    const EmailValue = event.target.value;
-    setEmail(EmailValue);
-    setErrors((previous) => ({
-      ...previous,
-      email: validateEmail(EmailValue),
+    setErrors((prevErrors) => ({
+      ...prevErrors,
+      [name]: validateField(name, value),
     }));
   };
 
-  //contact number change
-  const handleContactNumberChange = (event) => {
-    const ContactNumberValue = event.target.value;
-    setNumber(ContactNumberValue);
-    setErrors((previous) => ({
-      ...previous,
-      number: validateContactNumber(ContactNumberValue),
-    }));
+  // for all input fileds function validation
+  const validateField = (name, value) => {
+    const validationRules = {
+      firstname: validateFirstName,
+      lastname: validateLastName,
+      email: validateEmail,
+      number: validateContactNumber,
+      gender: validateGender,
+      date: validateDate,
+      password: validatePassword,
+      confirmpassword: validateConfirmPassword,
+    };
+    return validationRules[name] ? validationRules[name](value) : "";
   };
 
-  //gender change
-  const handleGenderChange = (event) => {
-    const GenderValue = event.target.value;
-    setGender(GenderValue);
-    setErrors((previous) => ({
-      ...previous,
-      gender: validateGender(GenderValue),
-    }));
-  };
-
-  // date change
-  const handleDateChange = (event) => {
-    const dateValue = event.target.value;
-    setDate(dateValue);
-    setErrors((previous) => ({
-      ...previous,
-      date: validateDate(dateValue),
-    }));
-  };
-
-  // passowrd change
-  const handlePasswordChange = (event) => {
-    const passwordValue = event.target.value;
-    setPassword(passwordValue);
-    setErrors((previous) => ({
-      ...previous,
-      password: validatePassword(passwordValue),
-    }));
-  };
-  //confirm password change
-  const handleConfirmPasswordChange = (event) => {
-    const confirmPasswordValue = event.target.value;
-    setConfirmPassword(confirmPasswordValue);
-    setErrors((previous) => ({
-      ...previous,
-      confirmpassword: validateConfirmPassword(confirmPasswordValue),
-    }));
-  };
-
-  // First name validation
+  // on first name change
   const validateFirstName = (fname) => {
     if (!fname) {
-      return "first name is required";
+      return "First name is required";
     } else if (!/^[a-zA-Z]{4,10}$/.test(fname)) {
-      return "Ffirst name must be between 4 to 10 alphabetic characters";
+      return "First name must be between 4 to 10 alphabetic characters";
     }
     return "";
   };
 
-  // Last name validation
+  // on last name change
   const validateLastName = (lname) => {
     if (!lname) {
-      return "last name is required";
+      return "Last name is required";
     } else if (!/^[a-zA-Z]{4,10}$/.test(lname)) {
-      return " last name must be between 4 to 10 alphabetic characters";
+      return "Last name must be between 4 to 10 alphabetic characters";
     }
     return "";
   };
 
-  //Email validation
+  // on email change
   const validateEmail = (email) => {
     if (!email) {
       return "Email is required";
@@ -148,7 +103,7 @@ export default function Registration() {
     return "";
   };
 
-  //Contact Number Validation
+  // on contact number change
   const validateContactNumber = (number) => {
     if (!number) {
       return "Number is required";
@@ -158,7 +113,7 @@ export default function Registration() {
     return "";
   };
 
-  // Gender Validation
+  // on gender check
   const validateGender = (gender) => {
     if (!gender) {
       return "Gender is required";
@@ -166,7 +121,7 @@ export default function Registration() {
     return "";
   };
 
-  //DOB Validation
+  // date check (DOB)
   const validateDate = (date) => {
     if (!date) {
       return "Date is required";
@@ -174,7 +129,7 @@ export default function Registration() {
     return "";
   };
 
-  // Password Validation
+  // passowrd checking
   const validatePassword = (password) => {
     if (!password) {
       return "Password is required";
@@ -186,73 +141,43 @@ export default function Registration() {
     return "";
   };
 
-  //Confirm Password Validation
+  // password and confirmpassword matching
   const validateConfirmPassword = (confirmpassword) => {
     if (!confirmpassword) {
       return "Confirm Password is required";
-    } else if (confirmpassword !== password) {
+    } else if (confirmpassword !== formData.password) {
       return "Passwords do not match";
     }
     return "";
   };
 
-  // on form submit
+  // on submit form
   const submitForm = (e) => {
     e.preventDefault();
-    const emailerrors = validateEmail(email);
-    const passworderrors = validatePassword(password);
-    const firstnameerrors = validateFirstName(firstname);
-    const lastnameerrors = validateLastName(lastname);
-    const gendererrors = validateGender(gender);
-    const dateerrors = validateDate(date);
-    const contactNumbererrors = validateContactNumber(number);
-    const confirmPassworderrors = validateConfirmPassword(confirmpassword);
 
-    setErrors({
-      email: emailerrors,
-      password: passworderrors,
-      firstname: firstnameerrors,
-      lastname: lastnameerrors,
-      gender: gendererrors,
-      date: dateerrors,
-      number: contactNumbererrors,
-      confirmpassword: confirmPassworderrors,
-    });
-    if (
-      emailerrors ||
-      passworderrors ||
-      firstnameerrors ||
-      lastnameerrors ||
-      gendererrors ||
-      dateerrors ||
-      contactNumbererrors ||
-      confirmPassworderrors
-    ) {
-      return;
+    const newErrors = Object.keys(formData).reduce((acc, key) => {
+      const error = validateField(key, formData[key]);
+      if (error) acc[key] = error;
+      return acc;
+    }, {});
+
+    setErrors(newErrors);
+
+    if (Object.keys(newErrors).length === 0) {
+      alert("Form submitted:", formData);
+      console.table(formData);
+      setFormData({
+        firstname: "",
+        lastname: "",
+        email: "",
+        number: "",
+        gender: "",
+        date: "",
+        password: "",
+        confirmpassword: "",
+      });
+      setErrors({});
     }
-
-    // Handle form submission
-    console.log("Form submitted:", {
-      email,
-      password,
-      firstname,
-      lastname,
-      gender,
-      date,
-      number,
-      confirmpassword,
-    });
-
-    // Clear form fields
-    setEmail("");
-    setPassword("");
-    setFirstName("");
-    setLastName("");
-    setGender("");
-    setDate("");
-    setNumber("");
-    setConfirmPassword("");
-    setErrors({});
   };
 
   return (
@@ -281,98 +206,53 @@ export default function Registration() {
                     </h3>
 
                     <form onSubmit={submitForm}>
-                      <div className="row">
-                        <div className="col-md-6 mb-4">
-                          <div className="form-outline">
-                            <label
-                              className="form-label"
-                              htmlFor="form3Example1m"
-                            >
-                              First name
-                            </label>
-                            <input
-                              type="text"
-                              id="form3Example1m"
-                              className="form-control form-control-lg"
-                              value={firstname}
-                              onChange={handleFirstNameChange}
-                            />
-                            {errors.firstname && (
-                              <div className="error text-danger">
-                                {errors.firstname}
-                              </div>
-                            )}
+                      {[
+                        {
+                          name: "firstname",
+                          label: "First name",
+                          type: "text",
+                        },
+                        { name: "lastname", label: "Last name", type: "text" },
+                        { name: "email", label: "Email ID", type: "text" },
+                        { name: "number", label: "Contact No", type: "number" },
+                        { name: "date", label: "Date Of Birth", type: "date" },
+                        {
+                          name: "password",
+                          label: "Password",
+                          type: "password",
+                        },
+                        {
+                          name: "confirmpassword",
+                          label: "Confirm Password",
+                          type: "password",
+                        },
+                      ].map((field) => (
+                        <div className="row" key={field.name}>
+                          <div className="col-md-6 mb-4">
+                            <div className="form-outline mb-4">
+                              <label
+                                className="form-label"
+                                htmlFor={field.name}
+                              >
+                                {field.label}
+                              </label>
+                              <input
+                                type={field.type}
+                                id={field.name}
+                                name={field.name}
+                                className="form-control form-control-lg"
+                                value={formData[field.name]}
+                                onChange={handleChange}
+                              />
+                              {errors[field.name] && (
+                                <div className="error text-danger">
+                                  {errors[field.name]}
+                                </div>
+                              )}
+                            </div>
                           </div>
                         </div>
-                        <div className="col-md-6 mb-4">
-                          <div className="form-outline">
-                            <label
-                              className="form-label"
-                              htmlFor="form3Example1n"
-                            >
-                              Last name
-                            </label>
-                            <input
-                              type="text"
-                              id="form3Example1n"
-                              className="form-control form-control-lg"
-                              value={lastname}
-                              onChange={handleLastNameChange}
-                            />
-                            {errors.lastname && (
-                              <div className="error text-danger">
-                                {errors.lastname}
-                              </div>
-                            )}
-                          </div>
-                        </div>
-                      </div>
-                      <div className="row">
-                        <div className="col-md-6 mb-4">
-                          <div className="form-outline mb-4">
-                            <label
-                              className="form-label"
-                              htmlFor="form3Example97"
-                            >
-                              Email ID
-                            </label>
-                            <input
-                              type="text"
-                              id="form3Example97"
-                              className="form-control form-control-lg"
-                              value={email}
-                              onChange={handleEmailChange}
-                            />
-                            {errors.email && (
-                              <div className="error text-danger">
-                                {errors.email}
-                              </div>
-                            )}
-                          </div>
-                        </div>
-                        <div className="col-md-6 mb-4">
-                          <div className="form-outline mb-4">
-                            <label
-                              className="form-label"
-                              htmlFor="form3Example98"
-                            >
-                              Contact No
-                            </label>
-                            <input
-                              type="number"
-                              id="form3Example98"
-                              className="form-control form-control-lg"
-                              value={number}
-                              onChange={handleContactNumberChange}
-                            />
-                            {errors.number && (
-                              <div className="error text-danger">
-                                {errors.number}
-                              </div>
-                            )}
-                          </div>
-                        </div>
-                      </div>
+                      ))}
                       <div className="row">
                         <div className="col-md-6 mb-4">
                           <div className="form-outline mb-4">
@@ -387,11 +267,11 @@ export default function Registration() {
                               <input
                                 className="form-check-input"
                                 type="radio"
-                                name="inlineRadioOptions"
+                                name="gender"
                                 id="maleGender"
                                 value="male"
-                                checked={gender === "male"}
-                                onChange={handleGenderChange}
+                                checked={formData.gender === "male"}
+                                onChange={handleChange}
                               />
                             </div>
 
@@ -405,84 +285,16 @@ export default function Registration() {
                               <input
                                 className="form-check-input"
                                 type="radio"
-                                name="inlineRadioOptions"
+                                name="gender"
                                 id="femaleGender"
                                 value="female"
-                                checked={gender === "female"}
-                                onChange={handleGenderChange}
+                                checked={formData.gender === "female"}
+                                onChange={handleChange}
                               />
                             </div>
                             {errors.gender && (
                               <div className="error text-danger">
                                 {errors.gender}
-                              </div>
-                            )}
-                          </div>
-                        </div>
-                        <div
-                          className="form-outline mb-4"
-                          style={{ width: "50%" }}
-                        >
-                          <label className="form-label" htmlFor="form3Example9">
-                            Date Of Birth
-                          </label>
-                          <input
-                            type="date"
-                            id="form3Example9"
-                            className="form-control form-control-lg"
-                            value={date}
-                            onChange={handleDateChange}
-                          />
-                          {errors.date && (
-                            <div className="error text-danger">
-                              {errors.date}
-                            </div>
-                          )}
-                        </div>
-                      </div>
-                      <div className="row">
-                        <div className="col-md-6 mb-4">
-                          <div className="form-outline mb-4">
-                            <label
-                              className="form-label"
-                              htmlFor="form3Example8"
-                            >
-                              Password
-                            </label>
-                            <input
-                              type="password"
-                              id="form3Example8"
-                              className="form-control form-control-sm"
-                              style={{ width: "100%" }}
-                              value={password}
-                              onChange={handlePasswordChange}
-                            />
-                            {errors.password && (
-                              <div className="error text-danger">
-                                {errors.password}
-                              </div>
-                            )}
-                          </div>
-                        </div>
-                        <div className="col-md-6 mb-4">
-                          <div className="form-outline mb-4">
-                            <label
-                              className="form-label"
-                              htmlFor="form3Example2"
-                            >
-                              Confirm Password
-                            </label>
-                            <input
-                              type="password"
-                              id="form3Example2"
-                              className="form-control form-control-sm"
-                              style={{ width: "100%" }}
-                              value={confirmpassword}
-                              onChange={handleConfirmPasswordChange}
-                            />
-                            {errors.confirmpassword && (
-                              <div className="error text-danger">
-                                {errors.confirmpassword}
                               </div>
                             )}
                           </div>
