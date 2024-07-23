@@ -1,40 +1,30 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import loginimg from "../../../assets/images/login_page.jpg";
-import { useState, useEffect } from "react";
 
 const Login = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  // error validation main object
+  const [formValues, setFormValues] = useState({ email: "", password: "" });
   const [errors, setErrors] = useState({});
-  // button disabled/enabled
   const [isFormValid, setIsFormValid] = useState(false);
 
   useEffect(() => {
-    const isValid = validateEmail(email) && !validatePassword(password);
+    const isValid = validateEmail(formValues.email) && !validatePassword(formValues.password);
     setIsFormValid(isValid);
-  }, [email, password]);
+  }, [formValues]);
 
-  // email onhchange
-  const handleEmailChange = (event) => {
-    const emailValue = event.target.value;
-    setEmail(emailValue);
-    setErrors((previous) => ({
-      ...previous,
-      email: validateEmail(emailValue),
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    setFormValues((prevValues) => ({
+      ...prevValues,
+      [name]: value,
+    }));
+
+    setErrors((prevErrors) => ({
+      ...prevErrors,
+      [name]: name === "email" ? validateEmail(value) : validatePassword(value),
     }));
   };
-  // password onhchange
-  const handlePasswordChange = (event) => {
-    const passwordValue = event.target.value;
-    setPassword(passwordValue);
-    setErrors((previous) => ({
-      ...previous,
-      password: validatePassword(passwordValue),
-    }));
-  };
-  //email validation
+
   const validateEmail = (email) => {
     if (!email) {
       return "Email is required";
@@ -43,7 +33,7 @@ const Login = () => {
     }
     return "";
   };
-  // password validation
+
   const validatePassword = (password) => {
     if (!password) {
       return "Password is required";
@@ -55,21 +45,19 @@ const Login = () => {
     return "";
   };
 
-  // on form submit
   const loginsubmit = (e) => {
     e.preventDefault();
-    const emailerrors = validateEmail(email);
-    const passworderrors = validatePassword(password);
-    if (emailerrors || passworderrors) {
+    const emailErrors = validateEmail(formValues.email);
+    const passwordErrors = validatePassword(formValues.password);
+    if (emailErrors || passwordErrors) {
       setErrors({
-        email: emailerrors,
-        password: passworderrors,
+        email: emailErrors,
+        password: passwordErrors,
       });
     } else {
-      console.log("form submitted", email, password);
-      // above three methods used for ...on form submit fileds must be clear
-      setEmail("");
-      setPassword("");
+      alert("form submitted", formValues);
+      console.table(formValues);
+      setFormValues({ email: "", password: "" });
       setErrors({});
     }
   };
@@ -103,57 +91,50 @@ const Login = () => {
                         ></i>
                         <span className="h1 fw-bold mb-0">Logo</span>
                       </div>
-
                       <h5
                         className="fw-normal mb-3 pb-3"
                         style={{ letterSpacing: "1px" }}
                       >
                         Sign into your account
                       </h5>
-
                       <div className="form-outline mb-4">
                         <input
                           type="email"
                           id="form2Example17"
                           className="form-control form-control-lg"
-                          value={email}
-                          onChange={handleEmailChange}
+                          name="email"
+                          value={formValues.email}
+                          onChange={handleChange}
                         />
                         {errors.email && (
-                          <div className="error text-danger">
-                            {errors.email}
-                          </div>
+                          <div className="error text-danger">{errors.email}</div>
                         )}
                         <label className="form-label" htmlFor="form2Example17">
                           Email address
                         </label>
                       </div>
-
                       <div className="form-outline mb-4">
                         <input
                           type="password"
                           id="form2Example27"
                           className="form-control form-control-lg"
-                          value={password}
-                          onChange={handlePasswordChange}
+                          name="password"
+                          value={formValues.password}
+                          onChange={handleChange}
                         />
                         {errors.password && (
-                          <div className="error text-danger">
-                            {errors.password}
-                          </div>
+                          <div className="error text-danger">{errors.password}</div>
                         )}
                         <label className="form-label" htmlFor="form2Example27">
                           Password
                         </label>
                       </div>
-
                       <div className="pt-1 mb-4">
                         <button
                           className="btn btn-dark btn-lg btn-block"
                           type="submit"
                           disabled={!isFormValid}
                         >
-                          {" "}
                           Login
                         </button>
                       </div>
