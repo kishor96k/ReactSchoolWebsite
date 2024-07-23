@@ -8,7 +8,9 @@ const Login = () => {
   const [isFormValid, setIsFormValid] = useState(false);
 
   useEffect(() => {
-    const isValid = validateEmail(formValues.email) && !validatePassword(formValues.password);
+    const isValid =
+      !validateEmail(formValues.email) &&
+      !validatePassword(formValues.password);
     setIsFormValid(isValid);
   }, [formValues]);
 
@@ -107,7 +109,9 @@ const Login = () => {
                           onChange={handleChange}
                         />
                         {errors.email && (
-                          <div className="error text-danger">{errors.email}</div>
+                          <div className="error text-danger">
+                            {errors.email}
+                          </div>
                         )}
                         <label className="form-label" htmlFor="form2Example17">
                           Email address
@@ -123,7 +127,9 @@ const Login = () => {
                           onChange={handleChange}
                         />
                         {errors.password && (
-                          <div className="error text-danger">{errors.password}</div>
+                          <div className="error text-danger">
+                            {errors.password}
+                          </div>
                         )}
                         <label className="form-label" htmlFor="form2Example27">
                           Password
