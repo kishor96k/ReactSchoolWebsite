@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/iframe-has-title */
 /* eslint-disable jsx-a11y/img-redundant-alt */
 import React, { useState, useEffect } from "react";
 import contactme from "../../assets/images/contact_me.png";
@@ -72,7 +73,7 @@ const Contact = () => {
     if (!message) return "Message is required";
     return "";
   };
-  
+
   //on form submit
   const formSubmit = (event) => {
     event.preventDefault();
@@ -107,6 +108,7 @@ const Contact = () => {
   return (
     <>
       <section className="h-100">
+        {/* contact form */}
         <div className="container py-5 h-100">
           <div className="row d-flex justify-content-center align-items-center h-100">
             <div className="col">
@@ -181,6 +183,22 @@ const Contact = () => {
                     </div>
                   </div>
                 </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        {/* map location for School */}
+        <div class="container mt-2 mb-2">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="embed-responsive embed-responsive-16by9">
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d950.3950466332747!2d75.9067687!3d17.6700316!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc5da7b94943059%3A0xd6d0e257b8fa073!2s02%2C%20Sidheshwar%20Peth%2C%20Solapur%2C%20Maharashtra%20413001!5e0!3m2!1sen!2sin!4v1722082868958!5m2!1sen!2sin"
+                  style={{ border: 0, height: 400, width: "100%" }}
+                  allowfullscreen=""
+                  loading="lazy"
+                  referrerpolicy="no-referrer-when-downgrade"
+                ></iframe>
               </div>
             </div>
           </div>
