@@ -30,7 +30,7 @@ export default function Registration() {
       gender,
       date,
       password,
-      confirmpassword
+      confirmpassword,
     } = formData;
 
     const isValid =
@@ -226,33 +226,42 @@ export default function Registration() {
                           label: "Confirm Password",
                           type: "password",
                         },
-                      ].map((field) => (
-                        <div className="row" key={field.name}>
-                          <div className="col-md-6 mb-4">
-                            <div className="form-outline mb-4">
-                              <label
-                                className="form-label"
-                                htmlFor={field.name}
-                              >
-                                {field.label}
-                              </label>
-                              <input
-                                type={field.type}
-                                id={field.name}
-                                name={field.name}
-                                className="form-control form-control-lg"
-                                value={formData[field.name]}
-                                onChange={handleChange}
-                              />
-                              {errors[field.name] && (
-                                <div className="error text-danger">
-                                  {errors[field.name]}
+                      ]
+                        .reduce((rows, field, index, arr) => {
+                          if (index % 2 === 0) {
+                            rows.push(arr.slice(index, index + 2));
+                          }
+                          return rows;
+                        }, [])
+                        .map((pair, pairIndex) => (
+                          <div className="row" key={pairIndex}>
+                            {pair.map((field) => (
+                              <div className="col-md-6 mb-4" key={field.name}>
+                                <div className="form-outline mb-4">
+                                  <label
+                                    className="form-label"
+                                    htmlFor={field.name}
+                                  >
+                                    {field.label}
+                                  </label>
+                                  <input
+                                    type={field.type}
+                                    id={field.name}
+                                    name={field.name}
+                                    className="form-control form-control-lg"
+                                    value={formData[field.name]}
+                                    onChange={handleChange}
+                                  />
+                                  {errors[field.name] && (
+                                    <div className="error text-danger">
+                                      {errors[field.name]}
+                                    </div>
+                                  )}
                                 </div>
-                              )}
-                            </div>
+                              </div>
+                            ))}
                           </div>
-                        </div>
-                      ))}
+                        ))}
                       <div className="row">
                         <div className="col-md-6 mb-4">
                           <div className="form-outline mb-4">
@@ -274,8 +283,7 @@ export default function Registration() {
                                 onChange={handleChange}
                               />
                             </div>
-
-                            <div className="form-check form-check-inline mb-0 me-4 mr-4 ml-4 ">
+                            <div className="form-check form-check-inline mb-0 me-4 mr-4 ml-4">
                               <label
                                 className="form-check-label"
                                 htmlFor="femaleGender"
@@ -306,7 +314,6 @@ export default function Registration() {
                           Login here
                         </Link>
                       </p>
-
                       <div className="d-flex justify-content-start pt-3">
                         <button
                           type="submit"
