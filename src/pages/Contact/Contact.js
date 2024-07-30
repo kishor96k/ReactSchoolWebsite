@@ -193,7 +193,7 @@ const Contact = () => {
             <div class="col-md-12">
               <div class="embed-responsive embed-responsive-16by9">
                 <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d950.3950466332747!2d75.9067687!3d17.6700316!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc5da7b94943059%3A0xd6d0e257b8fa073!2s02%2C%20Sidheshwar%20Peth%2C%20Solapur%2C%20Maharashtra%20413001!5e0!3m2!1sen!2sin!4v1722082868958!5m2!1sen!2sin"
+                  src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d434.9893270214257!2d75.923865!3d17.665754!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc5da42bd526ac3%3A0x1afaeacb9a0fd298!2sSG%20Soda%20Pub%20And%20Snacks!5e1!3m2!1sen!2sin!4v1722084213928!5m2!1sen!2sin"
                   style={{ border: 0, height: 400, width: "100%" }}
                   allowfullscreen=""
                   loading="lazy"
